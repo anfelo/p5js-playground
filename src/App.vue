@@ -1,13 +1,18 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Sidebar from '@/components/Sidebar.vue'
+</script>
 
 <template>
-  <menu>
-    <RouterLink to="/foo">Foo</RouterLink>
-    <RouterLink to="/bar">Bar</RouterLink>
-  </menu>
+  <div class="sidebar">
+    <Sidebar />
+  </div>
   <main>
     <RouterView />
   </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+.sidebar {
+  width: 200px;
+}
+</style>
