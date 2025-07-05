@@ -3,8 +3,10 @@ import Menu from 'primevue/menu'
 import type { MenuItem } from 'primevue/menuitem'
 
 const items: MenuItem[] = [
-  { label: 'Foo', url: '/foo' },
-  { label: 'Bar', url: '/bar' },
+  { label: 'Walker', url: '/walker' },
+  { label: 'Body', url: '/body' },
+  { label: 'Liquid', url: '/liquid' },
+  { label: 'Oscillator', url: '/oscillator' },
 ]
 </script>
 

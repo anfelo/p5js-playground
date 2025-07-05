@@ -3,16 +3,25 @@ import Sidebar from '@/components/Sidebar.vue'
 </script>
 
 <template>
-  <div class="sidebar">
-    <Sidebar />
+  <div class="layout">
+    <div class="sidebar">
+      <Sidebar />
+    </div>
+    <main>
+      <RouterView />
+    </main>
   </div>
-  <main>
-    <RouterView />
-  </main>
 </template>
 
 <style scoped>
+.layout {
+  display: flex;
+}
 .sidebar {
   width: 200px;
+  padding: 10px;
+}
+main {
+  margin: 20px;
 }
 </style>

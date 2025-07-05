@@ -1,19 +1,31 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import FooView from '@/views/FooView.vue'
-import BarView from '@/views/BarView.vue'
+import WalkerView from '@/views/WalkerView.vue'
+import BodyView from '@/views/BodyView.vue'
+import LiquidView from '@/views/LiquidView.vue'
+import OscillatorView from '@/views/OscillatorView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/foo',
-      name: 'foo',
-      component: FooView,
+      path: '/walker',
+      name: 'walker',
+      component: WalkerView,
     },
     {
-      path: '/bar',
-      name: 'bar',
-      component: BarView,
+      path: '/body',
+      name: 'body',
+      component: BodyView,
+    },
+    {
+      path: '/liquid',
+      name: 'liquid',
+      component: LiquidView,
+    },
+    {
+      path: '/oscillator',
+      name: 'oscillator',
+      component: OscillatorView,
     },
   ],
 })
