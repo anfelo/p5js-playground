@@ -82,7 +82,7 @@ export class Body {
       this.velocity.x *= -1
     }
 
-    if (this.position.y + this.size / 2 > this.p.width) {
+    if (this.position.y + this.size / 2 > this.p.height) {
       this.position.y = this.p.height - this.size / 2
       this.velocity.y *= -1
     } else if (this.position.y - this.size / 2 < 0) {

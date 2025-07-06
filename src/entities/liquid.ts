@@ -32,7 +32,7 @@ export class Liquid {
     return pos.x > this.x && pos.x < this.x + this.w && pos.y > this.y && pos.y < this.y + this.h
   }
 
-  calcualteDrag(body: Body) {
+  calculateDrag(body: Body) {
     const speed = vector2Mag(body.velocity)
     const dragMagnitude = this.c * speed * speed
     let dragForce = vector2Copy(body.velocity)
