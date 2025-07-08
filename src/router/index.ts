@@ -3,6 +3,8 @@ import WalkerView from '@/views/WalkerView.vue'
 import BodyView from '@/views/BodyView.vue'
 import LiquidView from '@/views/LiquidView.vue'
 import OscillatorView from '@/views/OscillatorView.vue'
+import WaveView from '@/views/WaveView.vue'
+import SpringView from '@/views/SpringView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +28,16 @@ const router = createRouter({
       path: '/oscillator',
       name: 'oscillator',
       component: OscillatorView,
+    },
+    {
+      path: '/wave',
+      name: 'wave',
+      component: WaveView,
+    },
+    {
+      path: '/spring',
+      name: 'spring',
+      component: SpringView,
     },
   ],
 })

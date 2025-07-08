@@ -7,6 +7,8 @@ const items: MenuItem[] = [
   { label: 'Body', url: '/body' },
   { label: 'Liquid', url: '/liquid' },
   { label: 'Oscillator', url: '/oscillator' },
+  { label: 'Wave', url: '/wave' },
+  { label: 'Spring', url: '/spring' },
 ]
 </script>
 
