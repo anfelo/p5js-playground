@@ -28,7 +28,7 @@ export class Oscillator {
     this.p.translate(this.p.width / 2, this.p.height / 2)
     this.p.stroke(245)
     this.p.fill(127)
-    this.p.line(0, 0, x, y)
+    // this.p.line(0, 0, x, y)
     this.p.circle(x, y, 32)
     this.p.pop()
   }

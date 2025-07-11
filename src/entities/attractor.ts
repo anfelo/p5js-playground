@@ -14,7 +14,7 @@ export class Attractor {
   position: Vector2
   mass: number
 
-  private p: p5
+  p: p5
 
   constructor(p: p5) {
     this.position = createVector2(p.width / 2, p.height / 2)
@@ -36,5 +36,28 @@ export class Attractor {
     this.p.stroke(0)
     this.p.fill(175, 200)
     this.p.circle(this.position.x, this.position.y, this.mass * 2)
+  }
+}
+
+export class WalkableAttractor extends Attractor {
+  tx: number
+  ty: number
+
+  constructor(p: p5) {
+    super(p)
+    this.tx = 0
+    this.ty = 10000
+  }
+
+  step() {
+    // With Perlin Noise
+    const xstep = this.p.map(this.p.noise(this.tx), 0, 1, 0, this.p.width)
+    const ystep = this.p.map(this.p.noise(this.ty), 0, 1, 0, this.p.height)
+
+    this.position.x = xstep
+    this.position.y = ystep
+
+    this.tx += 0.01
+    this.ty += 0.01
   }
 }
