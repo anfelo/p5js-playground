@@ -9,6 +9,7 @@ const items: MenuItem[] = [
   { label: 'Oscillator', url: '/oscillator' },
   { label: 'Wave', url: '/wave' },
   { label: 'Spring', url: '/spring' },
+  { label: 'Pendulum', url: '/pendulum' },
 ]
 </script>
 

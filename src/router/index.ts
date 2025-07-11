@@ -5,6 +5,7 @@ import LiquidView from '@/views/LiquidView.vue'
 import OscillatorView from '@/views/OscillatorView.vue'
 import WaveView from '@/views/WaveView.vue'
 import SpringView from '@/views/SpringView.vue'
+import PendulumView from '@/views/PendulumView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,6 +39,11 @@ const router = createRouter({
       path: '/spring',
       name: 'spring',
       component: SpringView,
+    },
+    {
+      path: '/pendulum',
+      name: 'pendulum',
+      component: PendulumView,
     },
   ],
 })
