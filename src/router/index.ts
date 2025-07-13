@@ -7,6 +7,7 @@ import WaveView from '@/views/WaveView.vue'
 import SpringView from '@/views/SpringView.vue'
 import PendulumView from '@/views/PendulumView.vue'
 import ButterflyView from '@/views/ButterflyView.vue'
+import FollowerView from '@/views/FollowerView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,6 +16,11 @@ const router = createRouter({
       path: '/walker',
       name: 'walker',
       component: WalkerView,
+    },
+    {
+      path: '/follower',
+      name: 'follower',
+      component: FollowerView,
     },
     {
       path: '/body',

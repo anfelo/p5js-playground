@@ -15,6 +15,7 @@ const items: MenuItem[] = [
   {
     label: 'Forces',
     items: [
+      { label: 'Follower', url: '/follower' },
       { label: 'Body', url: '/body' },
       { label: 'Liquid', url: '/liquid' },
     ],
