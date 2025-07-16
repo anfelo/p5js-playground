@@ -8,6 +8,8 @@ import SpringView from '@/views/SpringView.vue'
 import PendulumView from '@/views/PendulumView.vue'
 import ButterflyView from '@/views/ButterflyView.vue'
 import FollowerView from '@/views/FollowerView.vue'
+import SingleParticleView from '@/views/SingleParticleView.vue'
+import MultipleParticlesView from '@/views/MultipleParticlesView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -56,6 +58,16 @@ const router = createRouter({
       path: '/butterfly',
       name: 'butterfly',
       component: ButterflyView,
+    },
+    {
+      path: '/single-particle',
+      name: 'single-particle',
+      component: SingleParticleView,
+    },
+    {
+      path: '/multiple-particles',
+      name: 'multiple-particles',
+      component: MultipleParticlesView,
     },
   ],
 })

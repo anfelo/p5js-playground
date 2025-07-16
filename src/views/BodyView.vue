@@ -21,7 +21,7 @@ const mySketch = function (p: p5) {
   }
 
   p.draw = function () {
-    p.background('#181818')
+    p.background('#09090b')
     for (let i = 0; i < bodies.length; i++) {
       for (let j = 0; j < bodies.length; j++) {
         if (i !== j) {

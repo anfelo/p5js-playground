@@ -30,6 +30,13 @@ const items: MenuItem[] = [
       { label: 'Butterfly', url: '/butterfly' },
     ],
   },
+  {
+    label: 'Particle System',
+    items: [
+      { label: 'Single Particle', url: '/single-particle' },
+      { label: 'Multiple Particles', url: '/multiple-particles' },
+    ],
+  },
 ]
 </script>
 

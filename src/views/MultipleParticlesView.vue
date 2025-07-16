@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import p5 from 'p5'
-import { Follower } from '@/entities/follower'
+import { Particle } from '@/entities/particle'
 
 const canvasWrapperElement = ref('div')
 const p5ElementRef = ref<HTMLElement | null>(null)
@@ -10,18 +10,27 @@ const canvasWidth = 800
 const canvasHeight = 400
 
 const mySketch = function (p: p5) {
-  let follower: Follower
+  let totalParticles = 10
+  let particles: Particle[] = []
 
   p.setup = function () {
     p.createCanvas(canvasWidth, canvasHeight)
-    follower = new Follower(p, p.width, p.height)
+    for (let i = 0; i < totalParticles; i++) {
+      particles[i] = new Particle(p, p.width / 2, 20)
+    }
   }
 
   p.draw = function () {
     p.background('#09090b')
+    particles.push(new Particle(p, p.width / 2, 20))
 
-    follower.update()
-    follower.show()
+    for (let i = particles.length - 1; i >= 0; i--) {
+      let particle = particles[i]
+      particle.run()
+      if (particle.isDead()) {
+        particles.splice(i, 1)
+      }
+    }
   }
 }
 

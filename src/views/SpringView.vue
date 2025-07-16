@@ -22,7 +22,7 @@ const mySketch = function (p: p5) {
   }
 
   p.draw = function () {
-    p.background('#181818')
+    p.background('#09090b')
     let gravity = createVector2(0, 1)
     body.applyForce(gravity)
 

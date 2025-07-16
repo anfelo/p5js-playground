@@ -24,7 +24,7 @@ const mySketch = function (p: p5) {
   }
 
   p.draw = function () {
-    p.background('#181818')
+    p.background('#09090b')
     for (let i = 0; i < oscillators.length; i++) {
       oscillators[i].update()
       oscillators[i].show()
