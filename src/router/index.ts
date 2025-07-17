@@ -10,6 +10,7 @@ import ButterflyView from '@/views/ButterflyView.vue'
 import FollowerView from '@/views/FollowerView.vue'
 import SingleParticleView from '@/views/SingleParticleView.vue'
 import MultipleParticlesView from '@/views/MultipleParticlesView.vue'
+import EmittersView from '@/views/EmittersView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -68,6 +69,11 @@ const router = createRouter({
       path: '/multiple-particles',
       name: 'multiple-particles',
       component: MultipleParticlesView,
+    },
+    {
+      path: '/emitters',
+      name: 'emitters',
+      component: EmittersView,
     },
   ],
 })
