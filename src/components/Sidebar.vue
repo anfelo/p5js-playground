@@ -36,6 +36,7 @@ const items: MenuItem[] = [
       { label: 'Single Particle', url: '/single-particle' },
       { label: 'Multiple Particles', url: '/multiple-particles' },
       { label: 'Emitters', url: '/emitters' },
+      { label: 'Particles Repeller', url: '/repeller' },
     ],
   },
 ]

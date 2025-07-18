@@ -1,6 +1,7 @@
 import type p5 from 'p5'
 import { Particle } from './particle'
 import { createVector2, type Vector2 } from '@/utils/lalg'
+import type { Repeller } from './repeller'
 
 export class Emitter {
   particles: Particle[]
@@ -20,6 +21,13 @@ export class Emitter {
 
   applyForce(force: Vector2) {
     for (const particle of this.particles) {
+      particle.applyForce(force)
+    }
+  }
+
+  applyRepeller(repeller: Repeller) {
+    for (const particle of this.particles) {
+      const force = repeller.repel(particle)
       particle.applyForce(force)
     }
   }
