@@ -18,6 +18,12 @@ export class Emitter {
     this.particles.push(new Particle(this.p, this.origin.x, this.origin.y))
   }
 
+  applyForce(force: Vector2) {
+    for (const particle of this.particles) {
+      particle.applyForce(force)
+    }
+  }
+
   run() {
     const length = this.particles.length - 1
     for (let i = length; i >= 0; i--) {

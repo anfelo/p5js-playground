@@ -6,6 +6,7 @@ export class Particle {
   velocity: Vector2
   acceleration: Vector2
   lifespan: number
+  mass: number
 
   private p: p5
 
@@ -14,6 +15,7 @@ export class Particle {
     this.velocity = createVector2(p.random(-1, 1), p.random(-2, 0))
     this.acceleration = createVector2(0, 0)
     this.lifespan = 255.0
+    this.mass = 1
     this.p = p
   }
 
@@ -31,15 +33,13 @@ export class Particle {
   }
 
   applyForce(force: Vector2) {
-    this.acceleration = vector2Add(this.acceleration, force)
+    const f = vector2ScalarMul(force, 1 / this.mass)
+    this.acceleration = vector2Add(this.acceleration, f)
   }
 
   run() {
     this.update()
     this.show()
-
-    const gravity = createVector2(0, 0.1)
-    this.applyForce(gravity)
   }
 
   isDead(): boolean {

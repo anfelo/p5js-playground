@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue'
 import p5 from 'p5'
 import { Emitter } from '@/entities/emitter'
+import { createVector2 } from '@/utils/lalg'
 
 const canvasWrapperElement = ref('div')
 const p5ElementRef = ref<HTMLElement | null>(null)
@@ -23,7 +24,9 @@ const mySketch = function (p: p5) {
 
   p.draw = function () {
     p.background('#09090b')
+    const gravity = createVector2(0, 0.1)
     for (let emitter of emitters) {
+      emitter.applyForce(gravity)
       emitter.run()
       emitter.addParticle()
     }
