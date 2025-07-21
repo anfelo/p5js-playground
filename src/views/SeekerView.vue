@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import p5 from 'p5'
-import { Emitter } from '@/entities/emitter'
-import { Repeller } from '@/entities/repeller'
-import { createVector2 } from '@/utils/lalg'
+import { Vehicle } from '@/entities/vehicle'
+import { type Vector2, createVector2 } from '@/utils/lalg'
 
 const canvasWrapperElement = ref('div')
 const p5ElementRef = ref<HTMLElement | null>(null)
@@ -12,25 +11,26 @@ const canvasWidth = 800
 const canvasHeight = 400
 
 const mySketch = function (p: p5) {
-  let emitter: Emitter
-  let repeller: Repeller
+  let seeker: Vehicle
+  let target: Vector2
 
   p.setup = function () {
     p.createCanvas(canvasWidth, canvasHeight)
-    emitter = new Emitter(p, p.width / 2, 20)
-    repeller = new Repeller(p, p.width / 2 - 21, p.height / 2)
+    seeker = new Vehicle(p, p.width, p.height)
+    target = createVector2(p.width / 2, p.height / 2)
   }
 
   p.draw = function () {
     p.background('#09090b')
-    const gravity = createVector2(0, 0.1)
 
-    emitter.applyForce(gravity)
-    emitter.applyRepeller(repeller)
+    p.stroke(245)
+    p.strokeWeight(2)
+    p.fill(127)
+    p.circle(target.x, target.y, 48)
 
-    emitter.run()
-    emitter.addParticle()
-    repeller.show()
+    seeker.seek(target)
+    seeker.update()
+    seeker.show()
   }
 }
 

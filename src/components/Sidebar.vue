@@ -37,7 +37,12 @@ const items: MenuItem[] = [
       { label: 'Multiple Particles', url: '/multiple-particles' },
       { label: 'Emitters', url: '/emitters' },
       { label: 'Particles Repeller', url: '/repeller' },
+      { label: 'Smoke Emitter', url: '/smoke' },
     ],
+  },
+  {
+    label: 'Autonomous Agents',
+    items: [{ label: 'Seeker', url: '/seeker' }],
   },
 ]
 </script>

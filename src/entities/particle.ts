@@ -7,16 +7,18 @@ export class Particle {
   acceleration: Vector2
   lifespan: number
   mass: number
+  img: p5.Image | undefined
 
   private p: p5
 
-  constructor(p: p5, x: number, y: number) {
+  constructor(p: p5, x: number, y: number, img?: p5.Image) {
     this.position = createVector2(x, y)
     this.velocity = createVector2(p.random(-1, 1), p.random(-2, 0))
     this.acceleration = createVector2(0, 0)
     this.lifespan = 255.0
     this.mass = 1
     this.p = p
+    this.img = img
   }
 
   update() {
@@ -27,9 +29,15 @@ export class Particle {
   }
 
   show() {
-    this.p.stroke(245, this.lifespan)
-    this.p.fill(0, this.lifespan)
-    this.p.circle(this.position.x, this.position.y, 8)
+    if (this.img) {
+      this.p.tint(255, this.lifespan)
+      this.p.imageMode(this.p.CENTER)
+      this.p.image(this.img, this.position.x, this.position.y)
+    } else {
+      this.p.stroke(245, this.lifespan)
+      this.p.fill(0, this.lifespan)
+      this.p.circle(this.position.x, this.position.y, 8)
+    }
   }
 
   applyForce(force: Vector2) {

@@ -48,3 +48,12 @@ export function vector2SetMag(v: Vector2, mag: number): Vector2 {
   const normalized = vector2Normalize(v)
   return vector2ScalarMul(normalized, mag)
 }
+
+export function vector2Heading(v: Vector2): number {
+  if (v.x === 0) {
+    console.error('Horizontal component should not be zero')
+    return 0
+  }
+
+  return Math.atan2(v.y, v.x)
+}

@@ -12,6 +12,8 @@ import SingleParticleView from '@/views/SingleParticleView.vue'
 import MultipleParticlesView from '@/views/MultipleParticlesView.vue'
 import EmittersView from '@/views/EmittersView.vue'
 import ParticlesRepellerView from '@/views/ParticlesRepellerView.vue'
+import SmokeEmitterView from '@/views/SmokeEmitterView.vue'
+import SeekerView from '@/views/SeekerView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -80,6 +82,16 @@ const router = createRouter({
       path: '/repeller',
       name: 'repeller',
       component: ParticlesRepellerView,
+    },
+    {
+      path: '/smoke',
+      name: 'smoke',
+      component: SmokeEmitterView,
+    },
+    {
+      path: '/seeker',
+      name: 'seeker',
+      component: SeekerView,
     },
   ],
 })

@@ -6,17 +6,19 @@ import type { Repeller } from './repeller'
 export class Emitter {
   particles: Particle[]
   origin: Vector2
+  img: p5.Image | undefined
 
   private p: p5
 
-  constructor(p: p5, x: number, y: number) {
+  constructor(p: p5, x: number, y: number, img?: p5.Image) {
     this.particles = []
     this.origin = createVector2(x, y)
     this.p = p
+    this.img = img
   }
 
   addParticle() {
-    this.particles.push(new Particle(this.p, this.origin.x, this.origin.y))
+    this.particles.push(new Particle(this.p, this.origin.x, this.origin.y, this.img))
   }
 
   applyForce(force: Vector2) {
