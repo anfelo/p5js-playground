@@ -14,6 +14,7 @@ import EmittersView from '@/views/EmittersView.vue'
 import ParticlesRepellerView from '@/views/ParticlesRepellerView.vue'
 import SmokeEmitterView from '@/views/SmokeEmitterView.vue'
 import SeekerView from '@/views/SeekerView.vue'
+import FlowFieldView from '@/views/FlowFieldView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -92,6 +93,11 @@ const router = createRouter({
       path: '/seeker',
       name: 'seeker',
       component: SeekerView,
+    },
+    {
+      path: '/flow-field',
+      name: 'flow-field',
+      component: FlowFieldView,
     },
   ],
 })

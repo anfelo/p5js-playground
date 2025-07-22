@@ -10,6 +10,7 @@ import {
   vector2Subtract,
   type Vector2,
 } from '@/utils/lalg'
+import type { FlowField } from './flow-field'
 
 export class Vehicle {
   private p: p5
@@ -21,14 +22,14 @@ export class Vehicle {
   position: Vector2
   acceleration: Vector2
 
-  constructor(p: p5, x: number, y: number) {
+  constructor(p: p5, x: number, y: number, ms: number, mf: number) {
     this.p = p
     this.position = createVector2(x, y)
     this.velocity = createVector2(0.0, 0.0)
     this.acceleration = createVector2(0.0, 0.0)
     this.r = 6.0
-    this.maxspeed = 8
-    this.maxforce = 0.2
+    this.maxspeed = ms
+    this.maxforce = mf
   }
 
   update() {
@@ -38,8 +39,22 @@ export class Vehicle {
     this.acceleration = vector2ScalarMul(this.acceleration, 0)
   }
 
+  run() {
+    this.update()
+    this.borders()
+    this.show()
+  }
+
   applyForce(force: Vector2) {
     this.acceleration = vector2Add(this.acceleration, force)
+  }
+
+  // Wraparound
+  borders() {
+    if (this.position.x < -this.r) this.position.x = this.p.width + this.r
+    if (this.position.y < -this.r) this.position.y = this.p.height + this.r
+    if (this.position.x > this.p.width + this.r) this.position.x = -this.r
+    if (this.position.y > this.p.height + this.r) this.position.y = -this.r
   }
 
   seek(target: Vector2) {
@@ -55,6 +70,21 @@ export class Vehicle {
 
     let steer = vector2Subtract(desired, this.velocity)
     steer = vector2Limit(steer, this.maxforce)
+    this.applyForce(steer)
+  }
+
+  // Implementing Reynolds' flow field following algorithm
+  // http://www.red3d.com/cwr/steer/FlowFollow.html
+  follow(flow: FlowField) {
+    // What is the vector at that spot in the flow field?
+    let desired = flow.lookup(this.position)
+    // Scale it up by maxspeed
+    desired = vector2ScalarMul(desired, this.maxspeed)
+
+    // Steering is desired minus velocity
+    let steer = vector2Subtract(desired, this.velocity)
+    steer = vector2Limit(steer, this.maxforce)
+
     this.applyForce(steer)
   }
 

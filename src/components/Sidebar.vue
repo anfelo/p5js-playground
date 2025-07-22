@@ -42,7 +42,10 @@ const items: MenuItem[] = [
   },
   {
     label: 'Autonomous Agents',
-    items: [{ label: 'Seeker', url: '/seeker' }],
+    items: [
+      { label: 'Seeker', url: '/seeker' },
+      { label: 'Flow Field', url: '/flow-field' },
+    ],
   },
 ]
 </script>
