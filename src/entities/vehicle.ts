@@ -4,6 +4,7 @@ import {
   vector2Add,
   vector2Heading,
   vector2Limit,
+  vector2Mag,
   vector2ScalarMul,
   vector2SetMag,
   vector2Subtract,
@@ -43,7 +44,15 @@ export class Vehicle {
 
   seek(target: Vector2) {
     let desired = vector2Subtract(target, this.position)
-    desired = vector2SetMag(desired, this.maxspeed)
+    const dMag = vector2Mag(desired)
+
+    if (dMag < 100) {
+      const m = this.p.map(dMag, 0, 100, 0, this.maxspeed)
+      desired = vector2SetMag(desired, m)
+    } else {
+      desired = vector2SetMag(desired, this.maxspeed)
+    }
+
     let steer = vector2Subtract(desired, this.velocity)
     steer = vector2Limit(steer, this.maxforce)
     this.applyForce(steer)
