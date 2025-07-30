@@ -57,3 +57,7 @@ export function vector2Heading(v: Vector2): number {
 
   return Math.atan2(v.y, v.x)
 }
+
+export function vector2Dot(v1: Vector2, v2: Vector2): number {
+  return v1.x * v2.x + v1.y * v2.y
+}
