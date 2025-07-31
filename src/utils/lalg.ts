@@ -51,11 +51,20 @@ export function vector2SetMag(v: Vector2, mag: number): Vector2 {
 
 export function vector2Heading(v: Vector2): number {
   if (v.x === 0) {
-    console.error('Horizontal component should not be zero')
+    // Horizontal component should not be zero
     return 0
   }
 
   return Math.atan2(v.y, v.x)
+}
+
+/**
+ * Calculates the euclidean distance between two vectors
+ */
+export function vector2Dist(v1: Vector2, v2: Vector2): number {
+  const dx = v1.x - v2.x
+  const dy = v1.y - v2.y
+  return Math.sqrt(dx * dx + dy * dy)
 }
 
 export function vector2Dot(v1: Vector2, v2: Vector2): number {

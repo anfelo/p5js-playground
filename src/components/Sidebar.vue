@@ -45,6 +45,7 @@ const items: MenuItem[] = [
     items: [
       { label: 'Seeker', url: '/seeker' },
       { label: 'Flow Field', url: '/flow-field' },
+      { label: 'Path Follower', url: '/path-follower' },
     ],
   },
 ]

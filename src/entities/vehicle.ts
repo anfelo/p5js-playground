@@ -2,15 +2,20 @@ import p5 from 'p5'
 import {
   createVector2,
   vector2Add,
+  vector2Copy,
+  vector2Dist,
+  vector2Dot,
   vector2Heading,
   vector2Limit,
   vector2Mag,
+  vector2Normalize,
   vector2ScalarMul,
   vector2SetMag,
   vector2Subtract,
   type Vector2,
 } from '@/utils/lalg'
 import type { FlowField } from './flow-field'
+import type { Path } from './path'
 
 export class Vehicle {
   private p: p5
@@ -88,6 +93,22 @@ export class Vehicle {
     this.applyForce(steer)
   }
 
+  followPath(path: Path) {
+    let future = vector2Copy(this.velocity)
+    future = vector2SetMag(future, 25)
+    future = vector2Add(future, this.position)
+
+    const normalPoint = this.getNormalPoint(future, path.start, path.end)
+    let b = vector2Subtract(path.end, path.start)
+    b = vector2SetMag(b, 25)
+    const target = vector2Add(normalPoint, b)
+
+    const distance = vector2Dist(normalPoint, future)
+    if (distance > path.radius) {
+      this.seek(target)
+    }
+  }
+
   show() {
     const angle = vector2Heading(this.velocity)
     this.p.fill(127)
@@ -102,5 +123,18 @@ export class Vehicle {
     this.p.vertex(-this.r * 2, this.r)
     this.p.endShape(this.p.CLOSE)
     this.p.pop()
+  }
+
+  /**
+   * Calculates the normal vector in the position between 2 poinsts a and b
+   */
+  private getNormalPoint(position: Vector2, a: Vector2, b: Vector2): Vector2 {
+    const v1 = vector2Subtract(position, a)
+    let v2 = vector2Subtract(b, a)
+    v2 = vector2Normalize(v2)
+    v2 = vector2ScalarMul(v2, vector2Dot(v1, v2))
+    const normalPoint = vector2Add(a, v2)
+
+    return normalPoint
   }
 }
