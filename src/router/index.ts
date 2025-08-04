@@ -16,6 +16,7 @@ import SmokeEmitterView from '@/views/SmokeEmitterView.vue'
 import SeekerView from '@/views/SeekerView.vue'
 import FlowFieldView from '@/views/FlowFieldView.vue'
 import PathFollowerView from '@/views/PathFollowerView.vue'
+import MultiSegmentPathFollowerView from '@/views/MultiSegmentPathFollowerView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -104,6 +105,11 @@ const router = createRouter({
       path: '/path-follower',
       name: 'path-follower',
       component: PathFollowerView,
+    },
+    {
+      path: '/multi-segment-path-follower',
+      name: 'multi-segment-path-follower',
+      component: MultiSegmentPathFollowerView,
     },
   ],
 })

@@ -46,6 +46,7 @@ const items: MenuItem[] = [
       { label: 'Seeker', url: '/seeker' },
       { label: 'Flow Field', url: '/flow-field' },
       { label: 'Path Follower', url: '/path-follower' },
+      { label: 'Multi Segment Follower', url: '/multi-segment-path-follower' },
     ],
   },
 ]

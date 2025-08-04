@@ -21,6 +21,8 @@ export function vector2Limit(v: Vector2, limit: number): Vector2 {
 export function vector2Normalize(v: Vector2): Vector2 {
   const mag = vector2Mag(v)
 
+  if (mag === 0) return v
+
   return vector2ScalarMul(v, 1 / mag)
 }
 

@@ -66,12 +66,10 @@ export class Vehicle {
     let desired = vector2Subtract(target, this.position)
     const dMag = vector2Mag(desired)
 
-    if (dMag < 100) {
-      const m = this.p.map(dMag, 0, 100, 0, this.maxspeed)
-      desired = vector2SetMag(desired, m)
-    } else {
-      desired = vector2SetMag(desired, this.maxspeed)
-    }
+    if (dMag === 0) return
+
+    desired = vector2Normalize(desired)
+    desired = vector2ScalarMul(desired, this.maxspeed)
 
     let steer = vector2Subtract(desired, this.velocity)
     steer = vector2Limit(steer, this.maxforce)
@@ -109,7 +107,7 @@ export class Vehicle {
         normalPoint = vector2Copy(b)
       }
 
-      const distance = vector2Dist(normalPoint, future)
+      const distance = vector2Dist(future, normalPoint)
       if (distance < worldRecord) {
         worldRecord = distance
         target = vector2Copy(normalPoint)
