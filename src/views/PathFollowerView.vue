@@ -17,6 +17,9 @@ const mySketch = function (p: p5) {
   p.setup = function () {
     p.createCanvas(canvasWidth, canvasHeight)
     path = new Path(p)
+    path.addPoint(0, p.height / 3)
+    path.addPoint(p.width, (2 * p.height) / 3)
+
     vehicle = new Vehicle(p, 0, 0, 2, 0.2)
   }
 
@@ -25,7 +28,7 @@ const mySketch = function (p: p5) {
 
     path.show()
 
-    vehicle.seek(path.end)
+    vehicle.seek(path.points[path.points.length - 1])
     vehicle.followPath(path)
     vehicle.update()
     vehicle.show()

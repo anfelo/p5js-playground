@@ -97,14 +97,30 @@ export class Vehicle {
     let future = vector2Copy(this.velocity)
     future = vector2SetMag(future, 25)
     future = vector2Add(future, this.position)
+    let target = null
+    let worldRecord = Infinity
 
-    const normalPoint = this.getNormalPoint(future, path.start, path.end)
-    let b = vector2Subtract(path.end, path.start)
-    b = vector2SetMag(b, 25)
-    const target = vector2Add(normalPoint, b)
+    for (let i = 0; i < path.points.length - 1; i++) {
+      const a = path.points[i]
+      const b = path.points[i + 1]
+      let normalPoint = this.getNormalPoint(future, a, b)
 
-    const distance = vector2Dist(normalPoint, future)
-    if (distance > path.radius) {
+      if (normalPoint.x < a.x || normalPoint.x > b.x) {
+        normalPoint = vector2Copy(b)
+      }
+
+      const distance = vector2Dist(normalPoint, future)
+      if (distance < worldRecord) {
+        worldRecord = distance
+        target = vector2Copy(normalPoint)
+
+        let dir = vector2Subtract(b, a)
+        dir = vector2SetMag(dir, 25)
+        target = vector2Add(target, dir)
+      }
+    }
+
+    if (worldRecord > path.radius && target !== null) {
       this.seek(target)
     }
   }
