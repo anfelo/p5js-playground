@@ -17,6 +17,7 @@ import SeekerView from '@/views/SeekerView.vue'
 import FlowFieldView from '@/views/FlowFieldView.vue'
 import PathFollowerView from '@/views/PathFollowerView.vue'
 import MultiSegmentPathFollowerView from '@/views/MultiSegmentPathFollowerView.vue'
+import GroupBehaviorView from '@/views/GroupBehaviorView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -110,6 +111,11 @@ const router = createRouter({
       path: '/multi-segment-path-follower',
       name: 'multi-segment-path-follower',
       component: MultiSegmentPathFollowerView,
+    },
+    {
+      path: '/group-behavior',
+      name: 'group-behavior',
+      component: GroupBehaviorView,
     },
   ],
 })

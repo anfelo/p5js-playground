@@ -47,13 +47,19 @@ const items: MenuItem[] = [
       { label: 'Flow Field', url: '/flow-field' },
       { label: 'Path Follower', url: '/path-follower' },
       { label: 'Multi Segment Follower', url: '/multi-segment-path-follower' },
+      { label: 'Group Behavior', url: '/group-behavior' },
     ],
   },
 ]
 </script>
 
 <template>
-  <Menu :model="items" />
+  <Menu :model="items" class="sidebar-menu" />
 </template>
 
-<style scoped></style>
+<style>
+.sidebar-menu {
+  max-height: 98vh;
+  overflow: auto;
+}
+</style>

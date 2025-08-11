@@ -54,6 +54,11 @@ export class Vehicle {
     this.acceleration = vector2Add(this.acceleration, force)
   }
 
+  applyBehaviors(vehicles: Vehicle[]) {
+    this.separate(vehicles)
+    this.seek(createVector2(this.p.mouseX, this.p.mouseY))
+  }
+
   // Wraparound
   borders() {
     if (this.position.x < -this.r) this.position.x = this.p.width + this.r
@@ -120,6 +125,31 @@ export class Vehicle {
 
     if (worldRecord > path.radius && target !== null) {
       this.seek(target)
+    }
+  }
+
+  separate(vehicles: Vehicle[]) {
+    const desiredSeparation = this.r * 2
+    let sum = createVector2(0, 0);
+    let count = 0
+
+    for (const other of vehicles) {
+      const d = vector2Dist(this.position, other.position)
+
+      if (this != other && d < desiredSeparation) {
+        let diff = vector2Subtract(this.position, other.position)
+        diff = vector2SetMag(diff, 1 / d)
+
+        sum = vector2Add(sum, diff)
+        count++
+      }
+    }
+
+    if (count > 0) {
+      sum = vector2SetMag(sum, this.maxspeed)
+      let steer = vector2Subtract(sum, this.velocity)
+      steer = vector2Limit(steer, this.maxforce)
+      this.applyForce(steer)
     }
   }
 

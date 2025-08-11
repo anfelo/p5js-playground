@@ -18,7 +18,7 @@ import Sidebar from '@/components/Sidebar.vue'
   display: flex;
 }
 .sidebar {
-  width: 200px;
+  width: 240px;
   padding: 10px;
 }
 main {
