@@ -130,7 +130,8 @@ export class Vehicle {
 
   separate(vehicles: Vehicle[]) {
     const desiredSeparation = this.r * 2
-    let sum = createVector2(0, 0);
+    let sum = createVector2(0, 0)
+    let steer = createVector2(0, 0)
     let count = 0
 
     for (const other of vehicles) {
@@ -146,11 +147,13 @@ export class Vehicle {
     }
 
     if (count > 0) {
+      sum = vector2ScalarMul(sum, 1 / count)
       sum = vector2SetMag(sum, this.maxspeed)
-      let steer = vector2Subtract(sum, this.velocity)
+      steer = vector2Subtract(sum, this.velocity)
       steer = vector2Limit(steer, this.maxforce)
-      this.applyForce(steer)
     }
+
+    this.applyForce(steer)
   }
 
   show() {
