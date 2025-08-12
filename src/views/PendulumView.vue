@@ -37,4 +37,4 @@ onMounted(() => {
   <component :is="canvasWrapperElement" ref="p5ElementRef" />
 </template>
 
-<
+<style scoped></style>

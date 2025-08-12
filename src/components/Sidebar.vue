@@ -48,6 +48,7 @@ const items: MenuItem[] = [
       { label: 'Path Follower', url: '/path-follower' },
       { label: 'Multi Segment Follower', url: '/multi-segment-path-follower' },
       { label: 'Group Behavior', url: '/group-behavior' },
+      { label: 'Flocking', url: '/flocking' },
     ],
   },
 ]

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import p5 from 'p5'
-import { Particle } from '@/entities/particle'
-import { createVector2 } from '@/utils/lalg'
+import { Boid } from '@/entities/boid'
+import { Flock } from '@/entities/flock'
 
 const canvasWrapperElement = ref('div')
 const p5ElementRef = ref<HTMLElement | null>(null)
@@ -11,23 +11,26 @@ const canvasWidth = 800
 const canvasHeight = 400
 
 const mySketch = function (p: p5) {
-  let particle: Particle
+  let flock: Flock
 
   p.setup = function () {
     p.createCanvas(canvasWidth, canvasHeight)
-    particle = new Particle(p, p.width / 2, 20)
+    flock = new Flock()
+
+    for (let i = 0; i < 120; i++) {
+      const boid = new Boid(p, p.width / 2, p.height / 2, 3, 0.05)
+      flock.addBoid(boid)
+    }
   }
 
   p.draw = function () {
     p.background('#09090b')
-    particle.update()
-    particle.show()
+    flock.run()
+  }
 
-    let gravity = createVector2(0, 0.1)
-    particle.applyForce(gravity)
-    if (particle.isDead()) {
-      particle = new Particle(p, p.width / 2, 20)
-    }
+  // Add a new boid into the System
+  p.mouseDragged = function () {
+    flock.addBoid(new Boid(p, p.mouseX, p.mouseY, 3, 0.05))
   }
 }
 

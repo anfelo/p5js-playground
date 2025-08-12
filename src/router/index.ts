@@ -18,6 +18,7 @@ import FlowFieldView from '@/views/FlowFieldView.vue'
 import PathFollowerView from '@/views/PathFollowerView.vue'
 import MultiSegmentPathFollowerView from '@/views/MultiSegmentPathFollowerView.vue'
 import GroupBehaviorView from '@/views/GroupBehaviorView.vue'
+import FlockingView from '@/views/FlockingView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -116,6 +117,11 @@ const router = createRouter({
       path: '/group-behavior',
       name: 'group-behavior',
       component: GroupBehaviorView,
+    },
+    {
+      path: '/flocking',
+      name: 'flocking',
+      component: FlockingView,
     },
   ],
 })
